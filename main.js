@@ -1,6 +1,9 @@
-const {BrowserWindow, app} = require("electron");
+const {BrowserWindow, app} = require("electron")
+const express = require("express")
 
 let mainWindow
+let exApp = express()
+exApp.use(express.static('./resources/app'))
 
 function createWindow() {
     mainWindow = new BrowserWindow({
@@ -8,11 +11,15 @@ function createWindow() {
         height: 600,
     })
     mainWindow.maximize()
-    mainWindow.loadFile('./index.html')
-    mainWindow.show()
 
-    mainWindow.on('closed', function () {
-        mainWindow = null
+    const server = exApp.listen(0, () => {
+        console.log(`port is ${server.address().port}`)
+        mainWindow.loadURL(`http://localhost:${server.address().port}/`)
+        mainWindow.show()
+        mainWindow.on('closed', function () {
+            mainWindow = null
+            exApp = null
+        })
     })
 }
 app.on('ready', createWindow)

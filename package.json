@@ -20,7 +20,8 @@
     "eslint": "^6.7.2"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "express": "^4.17.1"
   },
   "config": {
     "forge": {
@@ -32,14 +33,12 @@
         "platform": "win32",
         "appVersion": "1.0.0",
         "arch": "x64",
-        "extraResource": "img",
         "overwrite": true
       },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
-          "config": {
-          }
+          "config": {}
         }
       ]
     }
