@@ -24,27 +24,22 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "name": "pixel",
+        "productName": "pixel",
+        "executableName": "pixel",
+        "icon": "favicon.ico",
+        "platform": "win32",
+        "appVersion": "1.0.0",
+        "arch": "x64",
+        "extraResource": "img",
+        "overwrite": true
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "pixel_builder_electron"
           }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
         }
       ]
     }
